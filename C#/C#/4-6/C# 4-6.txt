@@ -1,0 +1,274 @@
+4.
+Конвертиравание данных.
+
+using System;
+
+namespace project {
+
+    class Program {
+
+        static void Main() {
+            Console.Write("Введите число с точкой: ");
+            // Только для типа данных Double: user_input = Convert.ToDouble(Console.ReadLine());
+            float user_input = Convert.ToSingle(Console.ReadLine());
+            // ToSingle = спецально сделан для float, в терменале записывать с запятой.
+            Console.WriteLine("Переменная: " + user_input);
+        }
+
+    }
+
+}
+
+Математические вычесления.
+
+using System;
+
+namespace project {
+
+    class Program {
+
+        static void Main() {
+            Console.Write("Введите число с точкой: ");
+            float user_input = Convert.ToSingle(Console.ReadLine());
+
+            float result;        							result это имя а не переменая.
+            result = user_input + 10f;
+
+            result *= 2f;
+	    result++; // Таким способом можно только добавить еденицу.
+            result--; // Таким способом можно только отнять еденицу.
+            // result = result + 5f; (=) result += 2f;
+											Премечания матиматика на строки не работает.
+            // result = user_input * 2f;
+            // result = user_input / 5f;
+            // result = user_input % 2f;
+
+            // int a = 5, b = 6;
+            // int res = a + b;
+            
+            Console.WriteLine("Переменная: " + result);
+        }
+
+    }
+
+}
+
+Встроенные матиматические функции.
+
+cw (Написать в коде) + Tab (Нажать один раз или Enter) получиться System.Console.WriteLine();
+Math (Класс в ктором есть число PI и тд. работает также как библиотека в Python).
+Math.Ceiling // Округляет число к большему.
+Math.Floor // Округляет число к меньшему.
+Math.Round // Округляет число в зависимости отзначения сомого числа.
+Math.Min(0, 5) // Выведит минимальное число.
+Math.Max(0, 10) // Выведит максимальное число.
+Math.Pow(x, y) // Выводит число в степень x = число, y = степень.
+
+Подсчёт площади круга.
+
+using System;
+
+namespace project {
+
+    class Program {
+
+        static void Main() {
+            System.Console.WriteLine("Введите радиус круга: ");
+            double radius = Convert.ToDouble(Console.ReadLine());
+            double area = Math.PI * Math.Pow(radius, 2);
+            System.Console.WriteLine("Площадь круга с радиусом {0} равна {1}", radius, area);
+
+        }
+
+    }
+
+}
+
+
+5.
+
+
+if(Если) запись видётья так if(a == 5) или же скокрощение if(a). Если мы записываем условие "Если 'a' равно 5 то тогда мы обязательно пишем два знака равно '==' ".
+Запись if(a != 5) обозночает что код будет выполняться если 'a' не будет равно 5 скорощение выглядит так if (!a).
+else(Иначе) Пример:
+	    int a = 5;
+
+            if(a != 5) {
+                System.Console.WriteLine("Numder is 5");
+            } else {
+                System.Console.WriteLine("Numder is not 5");
+            }
+
+else if(Или же) записываеться между if и else можно проводить доп проверки сколько угодно раз но это не обезателная структура пример:
+	    int a = 5;
+
+            if(a > 7) {
+                System.Console.WriteLine("Numder > 7");
+            } else if(a < 5){
+                System.Console.WriteLine("Numder is < 5");
+            } else {
+                System.Console.WriteLine("Numder is unrecognized!");
+            }
+
+Операторы else и else if не могут существовать без оператора if. Также if должен быть прописан самым первым.
+Если одна строчка кода можно удалять фигурные скопки '{}'. Пример:
+	    int a = 5;
+
+            if(a > 7) // Это условие.
+                System.Console.WriteLine("Numder > 7"); // Это строчка.
+            else if(a < 5)
+                System.Console.WriteLine("Numder is < 5");
+            else
+                System.Console.WriteLine("Numder is unrecognized!");
+           
+&& (И) запись будет выглядеть так:
+else if(a == 5 && b) тоесть это услвие сработает если 'a' будет равно '5' и если 'b' ровно 'чему то там'.
+									 		Это можно прописывать сколько угодно раз.	
+|| (или) запись будет выглядеть так:	
+else if(a == 5 || b) тоесть это условие сработает если хотябы одна часть будет верной то код будет выполняться.
+
+Итоговый код.
+
+using System;
+
+namespace project {
+
+    class Program {
+
+        static void Main() {
+
+            int a = 5;
+            bool b = false;
+            if(a > 7)
+                System.Console.WriteLine("Numder > 7");
+            else if(a == 5 || b) {
+                System.Console.WriteLine("Numder is 5");
+                // if(b)
+                    System.Console.WriteLine("User has b");
+            } else {
+                System.Console.WriteLine("Numder is unrecognized!");
+            }
+
+        }
+
+    }
+
+}
+------------Терменал----------------------
+PS C:\project> dotnet run
+Numder is 5
+User has b
+------------------------------------------
+
+
+Практический пример.
+
+using System;
+
+namespace project {
+
+    class Program {
+
+        static void Main() {
+            
+            System.Console.Write("Enter name: ");
+            string role = Console.ReadLine();
+
+            if(role == "Admin"){
+              Console.Write("Enter user name: ");
+              string user_name = Console.ReadLine();
+              Console.Write("Enter {0} age: ", user_name);
+              short age = Convert.ToInt16(Console.ReadLine());
+
+                if(age <= 0 || age > 99){
+                    Console.Write("Enter {0} age: ", user_name);
+                    age = Convert.ToInt16(Console.ReadLine()); 
+                } 
+
+                if(age <= 0 || age > 99){
+                    System.Console.WriteLine("Error");
+                    age = 0;
+                }
+                else
+                    System.Console.WriteLine("User's age is " + age);
+            
+            } else
+                System.Console.WriteLine("You are not admin!");
+
+        }
+
+    }
+
+}
+
+------------Терменал----------------------
+PS C:\project> dotnet run
+Enter name: Admin
+Enter user name: Jhon
+Enter Jhon age: 10
+User's age is 10
+PS C:\project> 
+------------------------------------------
+
+6.
+
+
+ short user_input = Convert.ToInt16(Console.ReadLine());
+
+            switch(user_input) {                                 // switch это проверка переменной.
+                case a: 					 // case: начало проверки 'a' это число или строка и тд. которое мы проверяем.
+                    System.Console.WriteLine("Mumber is 5"); 
+                    break;					 // break; конец проверки.
+            }							 // Фигурные скобки не требуються так как case: и break; работают вместо них.
+
+
+default: это как else(Иначе) работает также но только с оператором Switch.
+Switch-case используеться для проверки одной переменой но с множеством условий также можно проверить только на равенство.
+
+
+
+using System;
+
+namespace project {
+
+    class Program {
+
+        static void Main() {
+            
+            short user_input = Convert.ToInt16(Console.ReadLine());
+
+            switch(user_input) {
+                case 5: 
+                    System.Console.WriteLine("Mumber is 5"); 
+                    break;
+                case 15: 
+                    System.Console.WriteLine("Mumber is 15"); 
+                    break;
+                case 20: 
+                    System.Console.WriteLine("Mumber is 20"); 
+                    break;
+                case 250: 
+                    System.Console.WriteLine("Mumber is 250"); 
+                    break;
+                default:
+                    System.Console.WriteLine("Mumber is unrecognized!");
+                    break;
+            }
+
+        }
+
+    }
+
+}
+
+------------Терменал----------------------
+PS C:\project> dotnet run
+13
+Mumber is unrecognized!
+PS C:\project> dotnet run
+15
+Mumber is 15
+PS C:\project> 
+------------------------------------------
+
+Конец.
